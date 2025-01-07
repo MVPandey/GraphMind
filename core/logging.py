@@ -6,7 +6,7 @@ logger.remove()
 logger.add(
     sys.stderr,
     level=config.LOG_LEVEL or "INFO",
-    format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+    format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",
 )
 
 logger.add(
@@ -18,8 +18,7 @@ logger.add(
     compression="zip",
     backtrace=True,
     diagnose=True,
-    enqueue=True
+    enqueue=True,
 )
 
 __all__ = ["logger"]
-
