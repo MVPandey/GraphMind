@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from core.logging import logger
-from routers import document
+from routers import document, user
 
 app = FastAPI(
     title="GraphMind",
@@ -19,6 +19,7 @@ app.add_middleware(
 )
 
 app.include_router(document.router)
+app.include_router(user.router)
 
 
 @app.exception_handler(Exception)

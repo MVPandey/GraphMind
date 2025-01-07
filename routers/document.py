@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 from services.document_service import DocumentService
 from core.database import get_db
 from core.logging import logger
@@ -9,9 +9,9 @@ from uuid import UUID
 router = APIRouter(prefix="/documents", tags=["documents"])
 
 
-@router.post("/")
+@router.post("")
 async def upload_document(
-    user_id: UUID, file: UploadFile = File(...), db: Session = Depends(get_db)
+    user_id: UUID, file: UploadFile = File(...), db: AsyncSession = Depends(get_db)
 ):
     try:
         if not file.filename.lower().endswith(".pdf"):
